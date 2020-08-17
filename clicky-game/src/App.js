@@ -13,53 +13,75 @@ class App extends Component {
     data: [
       {
         id: 1,
-        img: './assets/image1.jpeg'
+        img: './assets/image1.jpeg',
+        clicked: false
       },{
         id: 2,
-        img: './assets/image2.jpeg'
+        img: './assets/image2.jpeg',
+        clicked: false
       },{
         id: 3,
-        img: './assets/image3.jpeg'
+        img: './assets/image3.jpeg',
+        clicked: false
       },{
         id: 4,
-        img: './assets/image4.jpeg'
+        img: './assets/image4.jpeg',
+        clicked: false
       },{
         id: 5,
-        img: './assets/image5.jpeg'
+        img: './assets/image5.jpeg',
+        clicked: false
       },{
         id: 6,
-        img: './assets/image6.jpeg'
+        img: './assets/image6.jpeg',
+        clicked: false
       },{
         id: 7,
-        img: './assets/image7.jpeg'
+        img: './assets/image7.jpeg',
+        clicked: false
       },{
         id: 8,
-        img: './assets/image8.jpeg'
+        img: './assets/image8.jpeg',
+        clicked: false
       },{
         id: 9,
-        img: './assets/image9.jpeg'
+        img: './assets/image9.jpeg',
+        clicked: false
       },{
         id: 10,
-        img: './assets/image10.jpeg'
+        img: './assets/image10.jpeg',
+        clicked: false
       },{
         id: 11,
-        img: './assets/image11.jpeg'
+        img: './assets/image11.jpeg',
+        clicked: false
       },{
         id: 12,
-        img: './assets/image12.jpeg'
+        img: './assets/image12.jpeg',
+        clicked: false
       },
     ]
+  }
+
+  handleImageClick = (e) => {
+    let id = e.target.id || e.target.alt
+    id -= 1
+    let isClicked = e.target.dataset.clicked
+    console.log(this.state.data[id])
+    if (isClicked === 'false') {
+      this.setState()
+    }
   }
   
   render() {
     return (
-        <div className='container'>
+        <div className='container'> 
           <Navbar message={this.state.navMessage} score={this.state.score} topScore={this.state.topScore}/>
           <Jumbo />
           <div className='image-container'>
             {
               this.state.data.map(r => {
-                return <Image id={r.id} img={r.img} />
+                return <Image id={r.id} img={r.img} clicked={r.clicked} handleImageClick={this.handleImageClick}/>
               })
             }
           </div>
